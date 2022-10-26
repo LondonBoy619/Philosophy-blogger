@@ -102,7 +102,7 @@ Philosophy is a blogger originally made with PHP, and now remade with Laravel an
    php artisan migrate
    ```
 6.5 Run factories for seeding users and posts table "Optional"
-    ```sh
+    ```
     php artisan migrate:fresh --seed
     ```
 

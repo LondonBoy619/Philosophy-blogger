@@ -13,7 +13,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/LondonBoy619/Philosophy-Blogger/public/images/logo.png">
+  <a href="https://github.com/LondonBoy619/Philosophy-Blogger/blob/main/public/images/logo.png">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 

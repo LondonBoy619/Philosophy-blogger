@@ -13,24 +13,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/LondonBoy619/Philosophy-Blogger/blob/main/public/images/logo.png">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
 <h3 align="center">Philosophy</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/LondonBoy619/Philosophy-Blogger"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/LondonBoy619/Philosophy-Blogger">View Demo</a>
-    ·
-    <a href="https://github.com/LondonBoy619/Philosophy-Blogger/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/LondonBoy619/Philosophy-Blogger/issues">Request Feature</a>
-  </p>
 </div>
 
 
@@ -66,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Philosophy is a blogger originally made with PHP, and now remade with Laravel and with nicer UI.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,9 +70,6 @@
 ### Prerequisites
 
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
 * XAMPP v3 - or any version with PHP 8.
 * MySql Server - you could use the one embedded with XAMPP.
 * PhpMyAdmin "Optional" - can be used to make db management easier, alse embedded with XAMPP.
@@ -116,7 +97,14 @@
     DB_USERNAME=*Database username in MySql*
     DB_PASSWORD=*Database password*
    ```
-6. Run migrations
+6. Run migrations and factories
+   ```sh
+   php artisan migrate
+   ```
+6.5 Run factories for seeding users and posts table "Optional"
+    ```sh
+    php artisan migrate:fresh --seed
+    ```
 
 7. Run the following SQL on your database to insert 'cats' table info
    ```sql
@@ -126,6 +114,10 @@
    (2, 'Physical Health', 'physical-health', NULL, NULL),
    (3, 'Podcasts', 'podcasts', NULL, NULL),
    (4, 'Tech', 'tech', NULL, NULL);
+   ```
+8. Serve the app
+   ```sh
+   php artisan serve
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -169,7 +161,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -178,7 +170,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - london619boy@gmail.com
+Your Name - [@LinkedIn](https://www.linkedin.com/in/mohammed-jamal-2aaba8203/) - london619boy@gmail.com
 
 Project Link: [https://github.com/LondonBoy619/Philosophy-Blogger](https://github.com/LondonBoy619/Philosophy-Blogger)
 

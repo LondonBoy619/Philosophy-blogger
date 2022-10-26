@@ -23,6 +23,8 @@
     ================================================== -->
     <script src="{{ URL::asset('js/modernizr.js') }}"></script>
     <script src="{{ URL::asset('js/pace.min.js') }}"></script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
     <!-- favicons
     ================================================== -->
@@ -37,6 +39,7 @@
     <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ URL::asset('js/plugins.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
+    
 
 </body>
 

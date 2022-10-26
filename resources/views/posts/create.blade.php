@@ -1,71 +1,3 @@
-<?php
-   	// include($_SERVER['DOCUMENT_ROOT']."/includes/connect.php");
-	// require_once($_SERVER['DOCUMENT_ROOT'].'/includes/query_functions.php');
-   	
-	
-	
-	// if(isset($_POST['submitted'])){
-    //     if(!isset($_FILES[audio]['name'])){
-    //         $audio = 'none';
-    //     }
-    //     else $audio = $_FILES['audio']['name'];
-	// $image=$_POST['image'];
-	// $username = $_POST['username'];
-	// $password = $_POST['password'];
-	// $email = $_POST['email'];
-	// $title = $_POST['title'];
-	// $body = $_POST['body'];
-	// $cat = $_POST['cat'];
-	// 	if(checkUser($username, $password)){
-    //     $image = $_FILES['image']['name'];
-        
-    //     addPost($username, $password, $email, $title, $body, $cat, $audio, $image);
-		
-	// 	$ftp_server = "ftpupload.net";
-	// 	$ftp_username   = "epiz_27878453";
-	// 	$ftp_password   =  "londonboy770";
-
-	// 	// setup of connection
-	// 	$conn_id = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");
-
-	// 	// login
-	// 	if (@ftp_login($conn_id, $ftp_username, $ftp_password))
-	// 		{
-	// 			echo "Connected as $ftp_username@$ftp_server\n";
-	// 		}
-	// 	else
-	// 		{
-	// 			echo "Could not connect as $ftp_username !!\n";
-	// 		}
-	// 	echo "please keep this page open, article files are being uploaded!!";
-	// 	$file = $_FILES["audio"]["name"];
-	// 	$file_source = $_FILES["audio"]["tmp_name"];
-	// 	echo $file;
-	// 	echo $file_source;
-	// 	$remote_file_path = "/htdocs/media/audio/" . $file;
-	// 	ftp_put($conn_id, $remote_file_path, $file_source, FTP_BINARY);
-		
-	// 	echo "done uploading audio, now image";
-		
-	// 	$image = $_FILES["image"]["name"];
-	// 	$image_source = $_FILES["image"]["tmp_name"];
-	// 	echo $image;
-	// 	echo $image_source;
-	// 	$remote_file_path = "/htdocs/images/" . $image;
-	// 	ftp_put($conn_id, $remote_file_path, $image_source, FTP_BINARY);
-		
-	// 	ftp_close($conn_id);
-	// 	echo "done uploading files, you're free to close this tab now";
-	// 	echo "\n\nConnection Closed!!";
-    //     header("Location: ../index.php");
-	// }
-	// else
-	// 	echo "<h1>The username or password are incorrect!!!</h1>";
-	// }
-
-   	
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Main CSS-->
-    <link href="css/article.css" rel="stylesheet" media="all">
+    <link href="{{asset('css/article.css')}}" rel="stylesheet" media="all">
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>
@@ -95,61 +28,86 @@
                 <div class="card-heading">
                     <h2 class="title">Submit a new post at Philosophy</h2>
                 </div>
-                <div class="card-body">
-                    <form enctype="multipart/form-data" name="form_submit" method="post">
+                <div class="card-body" x-data="{option: 1}">
+                    <form enctype="multipart/form-data" name="form_submit" method="post" action="{{Route('createpost')}}">
+                        @csrf
 						<input type="hidden" name="submitted" value="1">
-                        <div class="form-row">
+                        {{-- <div class="form-row">
                             <div class="name">User name</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="username" placeholder="Username goes here" required>
-								<div class="label--desc">*This name would be used as the 'Author Name' in the article</div><br>
+                                <input class="input--style-6" type="text" name="username" placeholder="Username goes here">
+                                <div class="label--desc">*This name would be used as the 'Author Name' in the article</div><br>
+                                @error('username')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
 							<div class="name">Password</div>
                             <div class="value">
-                                <input class="input--style-6" type="password" name="password" placeholder="password goes here">
-								<div class="label--desc">*Your password is first assigned when your first article is published</div>
+                                <input class="input--style-6" type="password" name="password" placeholder="Password goes here">
+                                <div class="label--desc">*Your password is first assigned when your first article is published</div>
+                                @error('password')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-row">
+                        {{-- <div class="form-row">
                             <div class="name">Email address</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                    <input class="input--style-6" name="email" placeholder="example@email.com">
 									<div class="label--desc">*Be sure to use your primary email address</div>
                                 </div>
+                                @error('email')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-row">
 							<div class="name">Title</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="title" placeholder="Article's title">
+                                <input class="input--style-6" type="text" name="title" placeholder="Article's title" value="{{old('title')}}">
+                                @error('title')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="name">Body</div>
                             <div class="value">
-								<textarea class="input--style-6" name="body" placeholder="Compose an epic article..."></textarea><br>
+                                <textarea class="input--style-6" name="body" placeholder="Compose an epic article...">{{old('body')}}</textarea><br>
+                                @error('body')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
 							<div class="name">Category</div>
                             <div class="value">
-                                <select class="input--style-6" name="cat">
+                                <select class="input--style-6" name="cat" x-model="option">
 									<option value="1">Texts</option><option value="3">Podcasts</option><option value="2">Physical Health</option><option value="4">Tech</option>
-								</select>
+                                </select>
+                                @error('cat')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Audio file</div>
                             <div class="value">
                                 <div class="input-group js-input-file">
-                                    <input type="file" name="audio" accept="audio/*">
+                                    <input type="file" name="audio" accept="audio/*" x-show="option == 3 ? true : false">
                                 </div>
-                                <div class="label--desc">*In case of a podcast</div><br>
+                                <div class="label--desc" x-show="option != 3 ? true : false">*Only if category is 'Podcasts'</div><br>
+                                @error('audio')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
 							<div class="name">Header image</div>
                             <div class="value">
                                 <div class="input-group js-input-file">
                                     <input type="file" name="image" accept="image/*">
                                 </div>
+                                @error('image')
+                                    <p>{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
 						<div class="card-footer">

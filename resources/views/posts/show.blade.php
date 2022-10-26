@@ -4,7 +4,15 @@
     <!-- pageheader
     ================================================== -->
     <div class="s-pageheader">
-        @include('partials._header')
+        @php
+            if(auth()->check()){
+                $post->user->id == auth()->user()->id ? $owner=true : $owner=false;
+            }
+            else {
+                $owner=false;
+            }
+        @endphp
+        @include('partials._header', ['owner' => $owner,'post_id' => $post->id])
     </div>
 
 
@@ -29,17 +37,24 @@
     
             <div class="s-content__media col-full">
                 <div class="s-content__post-thumb">
-                    <img src="images/{{ $post->image }}" alt="" width="100%" height="80%">
+                    <img src="{{ $post->image }}" alt="" width="100%" height="80%">
                 </div>
-				@php
-                $audio_path ="audio/" . $post["audio"];
+                @if ($post->cat->name == 'Podcasts')
+                <div class="audio-wrap">
+                    <audio id="player2" width="100%" height="42" controls="controls" crossOrigin="anonymous">
+				        <source src="{{ $post->audio }}" type='audio/mpeg'>
+                    </audio>
+                </div>
+                @endif
+				{{-- @php
+                $audio_path = $post["audio"];
 				if($post->cat->name =='Podcasts'){
 					
 					echo '<div class="audio-wrap"><audio id="player2" width="100%" height="42" controls="controls" crossOrigin="anonymous">';
 					echo "<source src=\"$audio_path\" type='audio/mpeg'>";
 					echo "</audio></div>";
 				}
-                @endphp
+                @endphp --}}
             </div> <!-- end s-content__media -->
 
             <div class="col-full s-content__main">
@@ -47,11 +62,11 @@
                 <p class="lead">{{ $post->body }}</p>
                 
 
-                <h2>Example big heading</h2>
+                {{-- <h2>Example big heading</h2>
 
                 <blockquote><p>This is a simple example of a styled blockquote.</p></blockquote>
 
-				<h3>Example smaller Heading</h3>
+				<h3>Example smaller Heading</h3> --}}
 
                 <!--<p class="s-content__tags">
                     <span>Post Tags</span>

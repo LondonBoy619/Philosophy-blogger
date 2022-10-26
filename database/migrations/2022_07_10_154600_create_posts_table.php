@@ -15,7 +15,16 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('title');
+            $table->string('slug');
+            $table->integer('views')->default(0);
+            $table->text('body');
+            $table->string('image');
+            $table->string('audio')->default('none');
+            $table->boolean('published')->default(0);
             $table->timestamps();
+            $table->integer('cat_id');
         });
     }
 

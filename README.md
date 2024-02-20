@@ -170,7 +170,7 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@LinkedIn](https://www.linkedin.com/in/mohammed-jamal-2aaba8203/) - london619boy@gmail.com
+Mohammed Jamal - [@LinkedIn](https://www.linkedin.com/in/mohammed-jamal-2aaba8203/) - london619boy@gmail.com
 
 Project Link: [https://github.com/LondonBoy619/Philosophy-Blogger](https://github.com/LondonBoy619/Philosophy-Blogger)
 
